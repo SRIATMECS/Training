@@ -1,5 +1,5 @@
 import java.util.Arrays;
-public class HighestNumberAndSecondHighest {
+public class HighestNumbersFromArray {
     public static void main(String[] args) {
         int[] list = {50, 101, 20, 90, 80, 3, 45};
         Arrays.sort(list);
