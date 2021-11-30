@@ -1,5 +1,4 @@
 package io;
-
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -24,7 +23,7 @@ public class JsonToExcel {
         JSONObject jsonObject= (JSONObject) object;
         JSONArray jsonArray= (JSONArray) jsonObject.get("Student");
         for (int i=0;i<jsonArray.size();i++) {
-            JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+            JSONObject jsonObject1= (JSONObject) jsonArray.get(i);
             String name = (String) jsonObject1.get("Name");
             Label label = new Label(0, i, name);
             String age = (String) jsonObject1.get("Age");
