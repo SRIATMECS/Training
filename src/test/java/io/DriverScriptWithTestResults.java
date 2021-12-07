@@ -12,13 +12,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-public class DriverScriptTestResults {
+public class DriverScriptWithTestResults {
+    WebDriver driver;
     @Test
     void ds() throws IOException, BiffException, WriteException {
         FileInputStream fileInputStream = new FileInputStream("D:\\Training\\InputData\\demoqaTestData.xls");
@@ -27,9 +28,8 @@ public class DriverScriptTestResults {
         FileOutputStream fileOutputStream = new FileOutputStream("D:\\Training\\TestResultFolder\\demoqaResults.xls");
         WritableWorkbook writableWorkbook = Workbook.createWorkbook(fileOutputStream);
         WritableSheet writableSheet = writableWorkbook.createSheet("Sheet1", 1);
-        String pass, fail;
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/automation-practice-form");
             for (int i = 1; i < sheet.getRows(); i++) {
@@ -73,5 +73,9 @@ public class DriverScriptTestResults {
         }
         writableWorkbook.write();
         writableWorkbook.close();
+    }
+    @AfterTest
+    void closeBrowser(){
+        driver.quit();
     }
 }
